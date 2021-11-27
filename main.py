@@ -35,11 +35,13 @@ class User:  # User data may be implement with ArgParse/environment variable...
 
 class TestUser:
     user_for_api = User()
+    # headers = {
+    #     'X-Session-Id': f'{user_for_api.session_id}',
+    #     'Content-type': 'application/json'
+    # }
 
     def test_groups(self):
-        response = requests.get(BASE_URL + GROUPS_URL, headers={
-            'X-Session-Id': f'{self.user_for_api.session_id}',
-            'Content-type': 'application/json'})
+        response = requests.get(BASE_URL + GROUPS_URL)
         response_json = json.loads(response.text)
         # print(response.text)
         # print(self.user.response.text)
